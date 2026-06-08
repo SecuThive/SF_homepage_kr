@@ -10,6 +10,13 @@ export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
 
+// ko/en/ja 만 prerender하고 그 외 로케일은 404.
+export const dynamicParams = false;
+
+// Cloudflare(next-on-pages)는 모든 라우트 함수가 edge 런타임이어야 함.
+// 레이아웃에 선언하면 하위 [lang] 페이지 전체에 상속된다.
+export const runtime = "edge";
+
 export default function LangLayout({
   children,
   params,
