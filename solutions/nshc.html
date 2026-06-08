@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NSHC — 보안컨설팅 · 모의해킹 · SAFESQUARE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" />
+<link rel="stylesheet" href="../assets/shared.css" />
+<link rel="stylesheet" href="../assets/solution.css" />
+</head>
+<body>
+<div id="ss-header"></div>
+
+<section class="sol-hero">
+  <div class="sol-hero-grid"></div>
+  <div class="container">
+    <div class="crumbs"><a href="../index.html">HOME</a><span class="sep">/</span><a href="../index.html#portfolio">PORTFOLIO</a><span class="sep">/</span><span>NSHC</span></div>
+    <div class="layout">
+      <div>
+        <div class="partner-meta">
+          <span class="chip solid">PORTFOLIO · 01</span>
+          <span class="chip">AUTHORIZED DISTRIBUTOR</span>
+          <span class="chip accent">NSHC · SECURITY SERVICES</span>
+        </div>
+        <h1>공격자의 <em>시각</em>으로<br>조직을 진단합니다.</h1>
+        <p class="lede">보안컨설팅, 모의해킹, 취약점 진단, 위협 인텔리전스(CTI), 외부공격면 관리(ASM), 다크웹 모니터링을 하나의 서비스로. <b>실제 공격 시나리오</b>로 기업 보안의 빈틈을 찾고, 지속적으로 개선합니다.</p>
+      </div>
+
+      <div class="sol-visual nshc-visual">
+        <span class="corner tl">LIVE PENTEST · ENGAGEMENT #2026-048</span>
+        <span class="status"><span class="sd"></span>SCANNING</span>
+        <div class="nshc-grid"></div>
+        <div class="reticle"><div class="inner"></div><div class="core"></div></div>
+        <div class="nshc-term">
+          <div class="ln"><span class="p">$</span><span class="c">nmap -sV -T4 target.corp</span></div>
+          <div class="ln"><span class="o">[+]</span><span class="m">443/tcp open  https  nginx 1.21.3</span></div>
+          <div class="ln"><span class="o">[+]</span><span class="m">22/tcp  open  ssh    OpenSSH 7.4</span></div>
+          <div class="ln"><span class="p">$</span><span class="c">nuclei -t cves/ -u https://target</span></div>
+          <div class="ln"><span class="k">[!]</span><span class="m">CVE-2024-21412 — SmartScreen Bypass</span></div>
+          <div class="ln"><span class="k">[!]</span><span class="m">Exposed .git/config in /assets/_</span></div>
+          <div class="ln"><span class="p">$</span><span class="c">exploit/multi/http/cve-2024-_</span><span class="cursor"></span></div>
+        </div>
+        <span class="tag">RECON · EXPLOIT · REPORT · RE-TEST</span>
+      </div>
+    </div>
+
+    <div class="sol-stats">
+      <div><div class="n">500<sup>+</sup></div><div class="l">Pentest Projects</div></div>
+      <div><div class="n">40<sup>+</sup></div><div class="l">CVE Disclosed</div></div>
+      <div><div class="n">24<sup>/7</sup></div><div class="l">CTI Monitoring</div></div>
+      <div><div class="n">7<sup>days</sup></div><div class="l">ASM Discovery</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="sec-heading"><div class="inner">
+      <div data-reveal><div class="eyebrow">SERVICE PORTFOLIO</div><h2 class="section-title" style="margin-top:28px">6개의 축으로<br>조직의 보안을 <em style="font-style:italic;color:var(--accent);font-family:'Cormorant Garamond',serif">검증</em>합니다.</h2></div>
+      <p class="section-lede" data-reveal data-reveal-delay="1">공격 시뮬레이션부터 외부 노출 관리까지. 한 번의 스냅샷이 아닌 <b>지속적인 보안 프로그램</b>으로 운영합니다.</p>
+    </div></div>
+
+    <div class="feat-grid">
+      <div class="feat" data-reveal>
+        <div class="num">SERVICE / 01</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg></div>
+        <h4>보안컨설팅</h4>
+        <p>ISMS-P · ISO 27001 · NIST CSF 기준의 갭 분석과 로드맵 수립. 이사회 리포팅·리스크 레지스터까지.</p>
+        <div class="ftags"><span>ISMS-P</span><span>ISO 27001</span><span>NIST CSF</span></div>
+      </div>
+      <div class="feat" data-reveal data-reveal-delay="1">
+        <div class="num">SERVICE / 02</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/></svg></div>
+        <h4>모의해킹 (Pentest)</h4>
+        <p>블랙/그레이/화이트 박스 시나리오, 레드팀 훈련. 실제 APT 기법으로 방어 체계를 검증합니다.</p>
+        <div class="ftags"><span>Red Team</span><span>APT Simul.</span><span>Phishing</span></div>
+      </div>
+      <div class="feat" data-reveal data-reveal-delay="2">
+        <div class="num">SERVICE / 03</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></svg></div>
+        <h4>취약점 진단</h4>
+        <p>인프라·웹·모바일·클라우드·소스코드까지 전 계층. OWASP · MITRE ATT&amp;CK 매핑.</p>
+        <div class="ftags"><span>Infra</span><span>Web/API</span><span>Mobile</span><span>Cloud</span></div>
+      </div>
+      <div class="feat" data-reveal>
+        <div class="num">SERVICE / 04</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>위협 인텔리전스 (CTI)</h4>
+        <p>산업·지역 맞춤 위협 피드, IoC 구독, 악성코드 분석 리포트. SIEM · SOAR 자동 연동.</p>
+        <div class="ftags"><span>IoC Feed</span><span>Malware</span><span>SIEM 연동</span></div>
+      </div>
+      <div class="feat" data-reveal data-reveal-delay="1">
+        <div class="num">SERVICE / 05</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <h4>외부공격면 관리 (ASM)</h4>
+        <p>자산·도메인·인증서·코드 유출을 외부 관점에서 지속 스캔. Shadow IT까지 가시화.</p>
+        <div class="ftags"><span>Asset Disc.</span><span>Cert Watch</span><span>Shadow IT</span></div>
+      </div>
+      <div class="feat" data-reveal data-reveal-delay="2">
+        <div class="num">SERVICE / 06</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7l8 5 8-5M4 7v10l8 5 8-5V7"/></svg></div>
+        <h4>다크웹 모니터링</h4>
+        <p>임직원 계정·기밀·내부문서 유출을 다크웹·텔레그램·포럼에서 실시간 탐지.</p>
+        <div class="ftags"><span>Darkweb</span><span>Telegram</span><span>Credential</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="engagement">
+  <div class="container">
+    <div class="sec-heading"><div class="inner">
+      <div data-reveal><div class="eyebrow">ENGAGEMENT FLOW</div><h2 class="section-title" style="margin-top:28px">일회성이 아닌,<br><em style="font-style:italic;color:var(--accent);font-family:'Cormorant Garamond',serif">지속적인</em> 보안 프로그램.</h2></div>
+      <p class="section-lede" data-reveal data-reveal-delay="1">킥오프부터 재진단까지 5단계 사이클로 운영합니다.</p>
+    </div></div>
+    <div class="flow">
+      <div class="step" data-step="01"><h5>Scoping</h5><p>자산·범위·시나리오 정의, 룰 오브 인게이지먼트(RoE) 수립.</p><span class="w">Week 1</span></div>
+      <div class="step" data-step="02"><h5>Recon / ASM</h5><p>외부 노출면을 먼저 스캔해 실제 공격 표면을 확정합니다.</p><span class="w">Week 1–2</span></div>
+      <div class="step" data-step="03"><h5>Exploit</h5><p>APT·내부자 시나리오로 실제 침투 시도, CTI 결합 공격.</p><span class="w">Week 2–4</span></div>
+      <div class="step" data-step="04"><h5>Report</h5><p>CVSS · MITRE 매핑, 경영진/실무 두 버전 리포트.</p><span class="w">Week 4–5</span></div>
+      <div class="step" data-step="05"><h5>Re-test</h5><p>조치 후 재진단으로 개선 효과를 정량화합니다.</p><span class="w">Week 6+</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="specs">
+  <div class="container">
+    <div class="sec-heading"><div class="inner">
+      <div data-reveal><div class="eyebrow">SERVICE SPEC</div><h2 class="section-title" style="margin-top:28px">계약 전에 알아야 할 것.</h2></div>
+    </div></div>
+    <div class="spec-table">
+      <div class="spec-row"><div class="k">계약 형태</div><div class="v"><b>프로젝트 단위</b> / <b>연간 구독</b> (CTI·ASM·Darkweb) / <b>레드팀 리테이너</b></div></div>
+      <div class="spec-row"><div class="k">표준 방법론</div><div class="v">OWASP WSTG · PTES · MITRE ATT&amp;CK · NIST SP 800-115</div></div>
+      <div class="spec-row"><div class="k">진단 대상</div><div class="v">인프라 · 웹/API · 모바일(iOS·Android) · 클라우드(AWS·Azure·GCP) · 소스코드 · IoT/OT</div></div>
+      <div class="spec-row"><div class="k">리포팅</div><div class="v">경영진 요약 + 기술 상세 (한/영) · CVSS 3.1 · 재현 PoC · 조치 가이드</div></div>
+      <div class="spec-row"><div class="k">컴플라이언스</div><div class="v">ISMS-P · 전자금융감독규정 · 개인정보보호법 · PCI-DSS · HIPAA 대응</div></div>
+      <div class="spec-row"><div class="k">SAFESQUARE 지원</div><div class="v">견적·계약 원창구 · 국내 프로젝트 매니저 상주 · 분기 정기 미팅</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 data-reveal>공격자보다 먼저,<br>약점을 <em>발견</em>하세요.</h2>
+    <a class="cta-btn" href="../contact.html" data-reveal data-reveal-delay="1">컨설팅 문의 · 샘플 리포트
+      <svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></a>
+  </div>
+</section>
+
+<section class="related"><div class="container">
+  <div class="sec-heading" style="padding:0"><div class="inner"><div data-reveal><div class="eyebrow">EXPLORE</div><h2 class="section-title" style="margin-top:28px">다른 포트폴리오 보기.</h2></div></div></div>
+  <div class="related-grid">
+    <a href="sumologic.html" class="related-card"><div><div class="k">PORTFOLIO · 04</div><h5>Sumo Logic · Cloud SIEM</h5><p>CTI 결과를 SIEM 탐지 룰로.</p></div><div class="arr">→</div></a>
+    <a href="pnpsecure.html" class="related-card"><div><div class="k">PORTFOLIO · 06</div><h5>피앤피시큐어 · 접근제어</h5><p>내부 통제로 권한 경로 차단.</p></div><div class="arr">→</div></a>
+  </div>
+</div></section>
+
+<div id="ss-footer"></div>
+<script>window.SS_DEPTH=1;const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"accentHue":245,"animations":true,"displayFont":"serif"}/*EDITMODE-END*/;</script>
+<script src="../assets/shared.js"></script>
+<script>ssInit('solutions');</script>
+</body></html>

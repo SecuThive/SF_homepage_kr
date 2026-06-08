@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>뉴스 — SAFESQUARE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .news-main{padding: 120px 0}
+  .news-hero{display:grid;grid-template-columns: 1.4fr 1fr;gap:clamp(32px,5vw,80px);padding-bottom:64px;border-bottom:1px solid var(--line);margin-bottom:64px;align-items:end}
+  @media (max-width:900px){.news-hero{grid-template-columns:1fr}}
+  .news-hero .feat{aspect-ratio:16/10;background:var(--surface);border:1px solid var(--line);position:relative;overflow:hidden}
+  .news-hero .feat::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 22px,rgba(10,10,10,.04) 22px 23px)}
+  .news-hero .feat .tag{position:absolute;top:18px;left:18px;font-family:var(--font-display);font-size:11px;letter-spacing:.18em;color:var(--accent);background:var(--bg);padding:6px 12px}
+  .news-hero .cat{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--accent)}
+  .news-hero h2{font-family:var(--font-display);font-weight:300;font-size:clamp(30px,4vw,52px);letter-spacing:-.02em;line-height:1.15;margin:16px 0 24px}
+  .news-hero p{font-size:15px;line-height:1.8;color:var(--ink-60);margin-bottom:24px}
+  .news-hero .meta{display:flex;gap:24px;font-family:var(--font-display);font-size:12px;letter-spacing:.1em;color:var(--ink-40)}
+
+  .filter{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+  .filter button{padding:8px 18px;border:1px solid var(--line);border-radius:999px;font-family:var(--font-display);font-size:12px;letter-spacing:.1em;color:var(--ink-60);transition:all .3s}
+  .filter button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+  .news-list{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  @media (max-width:900px){.news-list{grid-template-columns:1fr}}
+  .news-card{border:1px solid var(--line);padding:28px;background:var(--surface);display:flex;flex-direction:column;gap:18px;min-height:340px;transition:all .4s ease;cursor:pointer}
+  .news-card:hover{border-color:var(--ink);transform:translateY(-4px)}
+  .news-card .thumb{aspect-ratio:16/9;background:#EEF1F4;margin:-28px -28px 0;position:relative;overflow:hidden}
+  .news-card .thumb::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 20px,rgba(10,10,10,.04) 20px 21px)}
+  .news-card .thumb .mini{position:absolute;top:16px;left:16px;font-family:var(--font-display);font-size:10px;letter-spacing:.18em;color:var(--ink-40)}
+  .news-card .cat{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--accent)}
+  .news-card h5{font-family:var(--font-display);font-weight:500;font-size:18px;line-height:1.4;letter-spacing:-.01em;flex:1}
+  .news-card .meta{display:flex;justify-content:space-between;color:var(--ink-40);font-size:12px;font-family:var(--font-display);letter-spacing:.08em}
+
+  .pagination{display:flex;justify-content:center;gap:4px;margin-top:64px}
+  .pagination a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);font-family:var(--font-display);font-size:13px;transition:all .3s}
+  .pagination a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .pagination a:hover:not(.on){border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div id="ss-header"></div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="container">
+    <div class="crumbs"><a href="index.html">HOME</a><span class="sep">/</span><span>NEWS</span></div>
+    <h1>우리는 계속<br><em>기준을 업데이트</em>합니다.</h1>
+    <p class="lede">SAFESQUARE의 연구·제품·현장 소식을 전합니다.</p>
+  </div>
+</section>
+
+<section class="news-main">
+  <div class="container">
+    <div class="news-hero">
+      <div class="feat"><span class="tag">FEATURED</span></div>
+      <div>
+        <div class="cat">AWARD · 2026.02.19</div>
+        <h2>2026 대한민국 정보보호대상<br>'보안 통합서비스' 부문 수상</h2>
+        <p>NSHC · Sumo Logic · 피앤피시큐어 등 검증된 파트너 기술을 단일 서비스로 통합 공급한 SAFESQUARE의 체계가 높게 평가되어 수상하였습니다. 멀티벤더 환경에서의 일관된 운영 품질이 핵심 선정 사유였다는 평입니다.</p>
+        <div class="meta"><span>PRESS RELEASE</span><span>2026.02.19</span></div>
+      </div>
+    </div>
+
+    <div class="filter">
+      <button class="on">ALL</button>
+      <button>PRODUCT</button>
+      <button>CASE STUDY</button>
+      <button>AWARD</button>
+      <button>PRESS</button>
+      <button>R&amp;D</button>
+    </div>
+
+    <div class="news-list">
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">CASE STUDY</span></div><div class="cat">CASE STUDY</div><h5>ATLAS DC, 통합관제로 연간 운영비 24% 절감</h5><div class="meta"><span>CASE</span><span>2026.04.12</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">PARTNERSHIP</span></div><div class="cat">PARTNERSHIP</div><h5>Sumo Logic Cloud SIEM 국내 공식 파트너 계약 체결</h5><div class="meta"><span>RELEASE</span><span>2026.03.28</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">PRESS</span></div><div class="cat">PRESS</div><h5>SAFESQUARE, 글로벌 파트너 12개국 확장</h5><div class="meta"><span>NEWS</span><span>2026.03.15</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">R&amp;D</span></div><div class="cat">R&amp;D</div><h5>Privacy-Preserving Vision 2.0, 얼굴 비식별화 지연 1ms 이하</h5><div class="meta"><span>RESEARCH</span><span>2026.02.28</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">AWARD</span></div><div class="cat">AWARD</div><h5>2026 대한민국 정보보호대상 '보안 통합서비스' 부문 수상</h5><div class="meta"><span>PRESS</span><span>2026.02.19</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">CASE STUDY</span></div><div class="cat">CASE STUDY</div><h5>METRO CITY, 광역 CCTV 48,000대 통합 운영</h5><div class="meta"><span>CASE</span><span>2026.01.22</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">PRODUCT</span></div><div class="cat">PRODUCT</div><h5>블루문소프트 DRM, Microsoft 365 실시간 연동 개시</h5><div class="meta"><span>RELEASE</span><span>2026.01.12</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">PRESS</span></div><div class="cat">PRESS</div><h5>SAFESQUARE, 2025년 매출 전년 대비 38% 성장</h5><div class="meta"><span>NEWS</span><span>2025.12.28</span></div></a>
+      <a href="#" class="news-card"><div class="thumb"><span class="mini">R&amp;D</span></div><div class="cat">R&amp;D</div><h5>Multi-Modal Behavior Analytics 2.0, CVPR 2025 채택</h5><div class="meta"><span>RESEARCH</span><span>2025.11.10</span></div></a>
+    </div>
+
+    <div class="pagination">
+      <a class="on">1</a><a>2</a><a>3</a><a>4</a><a>→</a>
+    </div>
+  </div>
+</section>
+
+<div id="ss-footer"></div>
+<script>const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"accentHue":245,"animations":true,"displayFont":"manrope"}/*EDITMODE-END*/;</script>
+<script src="assets/shared.js"></script>
+<script>
+ssInit('news');
+document.querySelectorAll('.filter button').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.filter button').forEach(x=>x.classList.remove('on'));b.classList.add('on');});});
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>채용 — SAFESQUARE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .careers-main{padding:120px 0}
+  .ethos{display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,5vw,96px);align-items:center;margin-bottom:120px}
+  @media (max-width:900px){.ethos{grid-template-columns:1fr}}
+  .ethos-big{font-family:var(--font-display);font-weight:200;font-size:clamp(44px,7vw,112px);line-height:.96;letter-spacing:-.03em}
+  .ethos-big em{font-style:normal;color:var(--accent);font-weight:500}
+  .ethos p{font-size:16px;line-height:1.8;color:var(--ink-60);margin-bottom:20px;max-width:52ch}
+
+  .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:120px}
+  @media (max-width:900px){.benefits{grid-template-columns:repeat(2,1fr)}}
+  .benefit{background:var(--bg);padding:28px 24px;min-height:180px}
+  .benefit .k{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--ink-40)}
+  .benefit .t{margin-top:14px;font-family:var(--font-display);font-size:17px;font-weight:500;letter-spacing:-.01em}
+  .benefit .d{margin-top:8px;font-size:13px;color:var(--ink-60);line-height:1.6}
+
+  .roles{border-top:1px solid var(--line)}
+  .role{padding:28px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:60px 1fr 1fr auto auto;gap:24px;align-items:center;cursor:pointer;transition:padding .3s ease}
+  .role:hover{padding-left:12px}
+  @media (max-width:800px){.role{grid-template-columns:60px 1fr auto}.role .team,.role .type{display:none}}
+  .role .num{font-family:var(--font-display);font-size:12px;letter-spacing:.18em;color:var(--ink-40)}
+  .role .title{font-family:var(--font-display);font-weight:500;font-size:clamp(18px,2vw,22px);letter-spacing:-.01em}
+  .role .team{font-size:12px;color:var(--ink-40);letter-spacing:.1em;font-family:var(--font-display)}
+  .role .type{font-family:var(--font-display);font-size:11px;letter-spacing:.1em;padding:4px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-60)}
+  .role .arr{font-family:var(--font-display);font-size:16px;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div id="ss-header"></div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="container">
+    <div class="crumbs"><a href="index.html">HOME</a><span class="sep">/</span><span>CAREERS</span></div>
+    <h1>경계를 설계하는<br><em>동료를</em> 찾습니다.</h1>
+    <p class="lede">SAFESQUARE는 현장에서 작동하는 기술을 만드는 사람들의 집단입니다. 완성된 제품이 아닌, 만드는 과정의 단정함을 중요하게 여깁니다.</p>
+  </div>
+</section>
+
+<section class="careers-main">
+  <div class="container">
+
+    <div class="ethos">
+      <div class="ethos-big" data-reveal>함께<br>만드는<br><em>기술.</em></div>
+      <div>
+        <p data-reveal>우리는 다섯 가지 원칙 위에서 일합니다.</p>
+        <p data-reveal>— 현장에서 작동하지 않으면 기술이 아닙니다.</p>
+        <p data-reveal>— 단순함은 완성의 언어입니다.</p>
+        <p data-reveal>— 데이터는 존중되어야 합니다.</p>
+        <p data-reveal>— 동료의 시간은 가장 귀한 자원입니다.</p>
+        <p data-reveal>— 우리는 계속 배웁니다.</p>
+      </div>
+    </div>
+
+    <div class="sec-heading" style="padding:0 0 40px">
+      <div class="inner">
+        <div data-reveal><div class="eyebrow">BENEFITS</div><h2 class="section-title" style="margin-top:28px">일하기 좋은 환경.</h2></div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">집중할 수 있는 시간과 공간, 그리고 충분한 휴식을 제공합니다.</p>
+      </div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit" data-reveal><div class="k">01 · TIME</div><div class="t">완전 유연 근무</div><div class="d">팀 코어타임을 제외한 100% 유연 근무와 리모트 옵션</div></div>
+      <div class="benefit" data-reveal><div class="k">02 · REST</div><div class="t">연 25일 연차 + 리프레시</div><div class="d">3년 근속 시 2주 리프레시 휴가, 해외 워케이션 지원</div></div>
+      <div class="benefit" data-reveal><div class="k">03 · GROWTH</div><div class="t">학습 지원 연 500만원</div><div class="d">컨퍼런스, 도서, 강의 등 성장을 위한 자유 집행 예산</div></div>
+      <div class="benefit" data-reveal><div class="k">04 · HEALTH</div><div class="t">종합 건강검진</div><div class="d">본인·배우자 연 1회, 심리상담 비대면 무제한</div></div>
+      <div class="benefit" data-reveal><div class="k">05 · STOCK</div><div class="t">전 직원 스톡옵션</div><div class="d">입사 시점에 공통 스톡옵션 부여, 분기 리비전</div></div>
+      <div class="benefit" data-reveal><div class="k">06 · FAMILY</div><div class="t">패밀리 케어</div><div class="d">출산·육아 3개월 유급휴가, 남성 동일 적용</div></div>
+      <div class="benefit" data-reveal><div class="k">07 · SPACE</div><div class="t">강남 집무 공간</div><div class="d">1인 전용 데스크·모니터·개인 회의실</div></div>
+      <div class="benefit" data-reveal><div class="k">08 · MEAL</div><div class="t">삼시세끼</div><div class="d">사내 식당 조·중·석식 무료, 미식 월 1회</div></div>
+    </div>
+
+    <div class="sec-heading" style="padding:80px 0 40px">
+      <div class="inner">
+        <div data-reveal><div class="eyebrow">OPEN ROLES</div><h2 class="section-title" style="margin-top:28px">현재 채용 중입니다.</h2></div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">13개 포지션이 열려 있습니다. 어울리는 자리가 있는지 살펴보세요.</p>
+      </div>
+    </div>
+
+    <div class="roles">
+      <a href="#" class="role" data-reveal><div class="num">001</div><div class="title">Computer Vision Engineer</div><div class="team">R&amp;D · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">002</div><div class="title">Senior Edge AI Researcher</div><div class="team">R&amp;D · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">003</div><div class="title">Platform Frontend Engineer</div><div class="team">PRODUCT · SEOUL / REMOTE</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">004</div><div class="title">Platform Backend Engineer</div><div class="team">PRODUCT · SEOUL / REMOTE</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">005</div><div class="title">Field Security Solutions Architect</div><div class="team">SOLUTION · 전국</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">006</div><div class="title">Product Designer (Security SaaS)</div><div class="team">DESIGN · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">007</div><div class="title">Brand &amp; Communications Designer</div><div class="team">DESIGN · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">008</div><div class="title">Customer Success Manager</div><div class="team">CS · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">009</div><div class="title">Hardware QA Engineer</div><div class="team">QA · 수원</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">010</div><div class="title">Technical Writer</div><div class="team">PRODUCT · REMOTE</div><div class="type">CONTRACT</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">011</div><div class="title">Sales Lead (Public Sector)</div><div class="team">SALES · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">012</div><div class="title">DevOps / SRE Engineer</div><div class="team">PLATFORM · SEOUL</div><div class="type">FULL-TIME</div><div class="arr">→</div></a>
+      <a href="#" class="role" data-reveal><div class="num">013</div><div class="title">Summer Internship — AI Research</div><div class="team">R&amp;D · SEOUL</div><div class="type">INTERN</div><div class="arr">→</div></a>
+    </div>
+
+  </div>
+</section>
+
+<div id="ss-footer"></div>
+<script>const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"accentHue":245,"animations":true,"displayFont":"manrope"}/*EDITMODE-END*/;</script>
+<script src="assets/shared.js"></script>
+<script>ssInit('careers');</script>
+</body>
+</html>

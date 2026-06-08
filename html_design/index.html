@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SAFESQUARE — 검증된 보안 기술, 한 곳에서.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  /* ---------- Hero — distributor identity ---------- */
+  .hero{
+    min-height: 100vh;
+    padding: 160px var(--pad-x) 60px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(10,10,10,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,10,10,.035) 1px, transparent 1px);
+    background-size: calc(100%/12) 100%, 100% 120px;
+    mask-image: linear-gradient(to bottom, black 50%, transparent);
+  }
+  .hero-meta{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--font-display);font-size:12px;letter-spacing:.18em;color:var(--ink-40);
+    position:relative;
+  }
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:10px;box-shadow:0 0 0 4px var(--accent-soft);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px oklch(0.96 0.03 245)}50%{box-shadow:0 0 0 10px transparent}}
+
+  .hero-inner{position:relative;margin-top:auto;margin-bottom:auto;max-width:1200px}
+  .hero-kicker{
+    font-family:var(--font-display);font-size:13px;letter-spacing:.22em;color:var(--ink-60);
+    margin-bottom:32px;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:14px;
+    padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  }
+  .hero-kicker .kdot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  .hero-title{
+    font-family:var(--font-display);font-weight:200;
+    font-size: clamp(48px, 8.2vw, 132px);line-height: 0.98; letter-spacing:-0.03em;color:var(--ink);
+  }
+  .hero-title .line{display:block;overflow:hidden}
+  .hero-title .line span{display:inline-block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
+  body.loaded .hero-title .line span{transform:none}
+  .hero-title .line:nth-child(2) span{transition-delay:.08s}
+  .hero-title .line:nth-child(3) span{transition-delay:.16s}
+  .hero-title em{font-style:italic;font-weight:400;color:var(--accent);font-family:"Cormorant Garamond",serif}
+
+  .hero-sub{margin-top:40px;max-width:620px;font-size:17px;line-height:1.75;color:var(--ink-60);opacity:0;transition:opacity 1s ease .8s;}
+  body.loaded .hero-sub{opacity:1}
+  .hero-sub b{color:var(--ink);font-weight:500}
+
+  /* Hero foot — Trusted by partner strip + stats */
+  .hero-foot-wrap{margin-top:72px}
+  .trusted-label{
+    font-family:var(--font-display);font-size:11px;letter-spacing:.24em;color:var(--ink-40);
+    padding-bottom:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;
+  }
+  .trusted-label .count{color:var(--ink);font-weight:500}
+  .partner-strip{
+    display:grid;grid-template-columns:repeat(6,1fr);
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:900px){.partner-strip{grid-template-columns:repeat(3,1fr)}}
+  .partner-cell{
+    padding:22px 18px;border-right:1px solid var(--line);
+    display:flex;flex-direction:column;gap:4px;justify-content:center;
+    min-height:86px;transition:background .3s;
+  }
+  .partner-cell:nth-child(6n){border-right:0}
+  @media (max-width:900px){
+    .partner-cell:nth-child(6n){border-right:1px solid var(--line)}
+    .partner-cell:nth-child(3n){border-right:0}
+  }
+  .partner-cell:hover{background:var(--surface)}
+  .partner-cell .pname{font-family:var(--font-display);font-weight:500;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+  .partner-cell .prole{font-family:var(--font-display);font-size:10.5px;letter-spacing:.12em;color:var(--ink-40);text-transform:uppercase}
+
+  .hero-stats{
+    display:grid;grid-template-columns: repeat(4, 1fr);gap:32px;padding-top:28px;
+  }
+  .stat .num{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-.02em;color:var(--ink);line-height:1;}
+  .stat .num sup{font-size:.5em;font-weight:400;color:var(--ink-40);margin-left:4px;vertical-align:super}
+  .stat .lbl{font-size:11px;color:var(--ink-40);margin-top:10px;letter-spacing:.08em;font-family:var(--font-display)}
+  @media (max-width:700px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* Marquee */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding: 22px 0;overflow:hidden;background:var(--surface);}
+  .marquee-track{display:flex;gap:56px;animation:marq 42s linear infinite;white-space:nowrap;width:max-content}
+  .marquee span{font-family:var(--font-display);font-size:13px;letter-spacing:.22em;color:var(--ink-40);display:inline-flex;align-items:center;gap:56px;text-transform:uppercase;}
+  .marquee span::after{content:"◇";color:var(--accent);margin-left:56px}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* About — distributor identity */
+  .about-preview{padding: 160px 0 40px}
+  .about-grid{display:grid;grid-template-columns: 5fr 7fr;gap: clamp(40px, 6vw, 96px);align-items:start}
+  @media (max-width:980px){.about-grid{grid-template-columns:1fr}}
+  /* About visual — orbital partner diagram */
+  .about-visual{aspect-ratio: 4/5;background: var(--surface);border:1px solid var(--line);position:relative;overflow:hidden;}
+  .about-visual::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(to right, rgba(10,10,10,.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,10,10,.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+  }
+  .about-visual .corner{position:absolute;font-family:var(--font-display);font-size:9px;letter-spacing:.2em;color:var(--ink-40)}
+  .about-visual .corner.tl{top:16px;left:18px}
+  .about-visual .corner.tr{top:16px;right:18px}
+  .about-visual .corner.bl{bottom:16px;left:18px}
+  .about-visual .corner.br{bottom:16px;right:18px}
+  .about-visual .label{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:10px;letter-spacing:.22em;color:var(--ink-40);text-align:center;white-space:nowrap}
+  .about-visual .diagram{position:absolute;inset:0;display:grid;place-items:center;padding:36px 28px}
+  .about-visual .diagram svg{width:100%;height:100%;max-height:520px;overflow:visible}
+
+  /* diagram rings + nodes */
+  .dgm-ring{fill:none;stroke:rgba(10,10,10,.08);stroke-width:.6}
+  .dgm-ring.dashed{stroke-dasharray:1 3}
+  .dgm-axis{stroke:rgba(10,10,10,.06);stroke-width:.5}
+  .dgm-line{stroke:var(--accent);stroke-width:.6;opacity:.35;fill:none}
+  .dgm-pulse{fill:var(--accent);opacity:.15;transform-origin:center;animation:dgm-pulse 3s ease-in-out infinite}
+  @keyframes dgm-pulse{
+    0%,100%{transform:scale(1);opacity:.12}
+    50%{transform:scale(1.15);opacity:.25}
+  }
+  .dgm-center{fill:#fff;stroke:var(--ink);stroke-width:1}
+  .dgm-center-mark{fill:var(--ink)}
+  .dgm-center-text{font-family:"Manrope",sans-serif;font-weight:500;font-size:7px;letter-spacing:.14em;fill:var(--ink);text-transform:uppercase}
+  .dgm-center-sub{font-family:"Manrope",sans-serif;font-size:5px;letter-spacing:.2em;fill:var(--ink-40);text-transform:uppercase}
+
+  .dgm-node{cursor:default}
+  .dgm-node .tile{fill:#fff;stroke:var(--ink);stroke-width:.8;transition:all .4s}
+  .dgm-node .dot{fill:var(--accent);r:2.5;transition:r .3s}
+  .dgm-node .nname{font-family:"Manrope",sans-serif;font-weight:500;font-size:7px;letter-spacing:0;fill:var(--ink)}
+  .dgm-node .ncat{font-family:"Manrope",sans-serif;font-size:5px;letter-spacing:.14em;fill:var(--ink-40);text-transform:uppercase}
+  .dgm-node .nno{font-family:"Manrope",sans-serif;font-size:4.5px;letter-spacing:.22em;fill:var(--ink-40)}
+  .dgm-node:hover .tile{fill:#F5F7FA;stroke:var(--accent)}
+  .dgm-node:hover .dot{r:3.5}
+  .dgm-node:hover .nname{fill:var(--accent)}
+  .about-copy h3{font-family:var(--font-display);font-weight:300;font-size:clamp(26px,3.2vw,40px);line-height:1.25;letter-spacing:-.02em;margin: 22px 0 28px;}
+  .about-copy h3 em{font-style:italic;color:var(--accent);font-family:"Cormorant Garamond",serif;font-weight:400}
+  .about-copy p{font-size:16px;line-height:1.85;color:var(--ink-60);margin-bottom:20px;max-width:56ch}
+  .about-copy p b{color:var(--ink);font-weight:500}
+  .link-arr{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-family:var(--font-display);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .link-arr .arr{transition:transform .3s}
+  .link-arr:hover .arr{transform:translateX(6px)}
+
+  /* WHY SAFESQUARE — 4 values (new) */
+  .why{padding: 120px 0;border-top:1px solid var(--line);margin-top:120px}
+  .why-grid{display:grid;grid-template-columns: repeat(4, 1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);}
+  @media (max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.why-grid{grid-template-columns:1fr}}
+  .why-cell{
+    padding: 40px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:flex;flex-direction:column;gap:20px;min-height:300px;transition:background .4s;
+  }
+  .why-cell:hover{background:var(--surface)}
+  .why-cell .no{font-family:var(--font-display);font-size:11px;letter-spacing:.22em;color:var(--ink-40)}
+  .why-cell .glyph{width:52px;height:52px;border:1px solid var(--ink);display:grid;place-items:center}
+  .why-cell .glyph svg{width:24px;height:24px;stroke:var(--ink);stroke-width:1.4;fill:none}
+  .why-cell h4{font-family:var(--font-display);font-weight:500;font-size:20px;letter-spacing:-.01em;line-height:1.25}
+  .why-cell p{font-size:13.5px;line-height:1.75;color:var(--ink-60);flex:1}
+
+  /* Portfolio — partner products */
+  .solutions-preview{padding: 40px 0 140px;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);}
+  @media (max-width:980px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.prod-grid{grid-template-columns:1fr}}
+  .prod{padding: 36px 30px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;transition: background .5s ease;display:flex;flex-direction:column;gap:16px;background:var(--bg)}
+  .prod:hover{background:#F5F7FA}
+  .prod .head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .prod .no{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--ink-40)}
+  .prod .cat{font-family:var(--font-display);font-size:10px;letter-spacing:.16em;color:var(--accent);padding:4px 8px;border:1px solid var(--accent);border-radius:999px;white-space:nowrap}
+  .prod .partner-line{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+  .prod .partner-line .ptag{font-family:var(--font-display);font-size:10px;letter-spacing:.16em;color:var(--ink-40);padding:3px 7px;border:1px solid var(--line);border-radius:3px;text-transform:uppercase}
+  .prod .partner-line .pname{font-family:var(--font-display);font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--ink)}
+  .prod h4{font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;line-height:1.2}
+  .prod p{font-size:13.5px;line-height:1.75;color:var(--ink-60);flex:1}
+  .prod .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .prod .tag{font-family:var(--font-display);font-size:10.5px;letter-spacing:.08em;padding:3px 9px;border:1px solid var(--line);color:var(--ink-60);border-radius:999px}
+  .prod .more{font-family:var(--font-display);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;color:var(--ink);padding-top:6px}
+  .prod .more .arr{display:inline-block;transition:transform .3s}
+  .prod:hover .more .arr{transform:translateX(4px)}
+  .prod .mark{width:42px;height:42px;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:14px;letter-spacing:-.02em;flex-shrink:0}
+
+  /* Service flow — the distribution process (new) */
+  .flow{padding: 140px 0;border-bottom:1px solid var(--line)}
+  .flow-steps{
+    display:grid;grid-template-columns: repeat(5, 1fr);
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
+    counter-reset: step;
+  }
+  @media (max-width:900px){.flow-steps{grid-template-columns:1fr}}
+  .flow-step{
+    padding:40px 28px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative;display:flex;flex-direction:column;gap:18px;min-height:260px;
+    counter-increment: step;
+  }
+  .flow-step::before{
+    content: "0" counter(step);
+    font-family:var(--font-display);font-weight:200;font-size:56px;letter-spacing:-.03em;
+    color:var(--ink);line-height:1;
+  }
+  .flow-step h5{font-family:var(--font-display);font-weight:500;font-size:18px;letter-spacing:-.01em}
+  .flow-step p{font-size:13px;line-height:1.75;color:var(--ink-60);flex:1}
+  .flow-step .tag{font-family:var(--font-display);font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;padding-top:8px;border-top:1px solid var(--line-soft)}
+  .flow-step.active{background:var(--ink);color:#fff}
+  .flow-step.active::before{color:var(--accent)}
+  .flow-step.active p{color:rgba(255,255,255,.7)}
+  .flow-step.active .tag{color:var(--accent);border-top-color:rgba(255,255,255,.1)}
+
+  /* Biz */
+  .biz-preview{padding: 40px 0 140px}
+  .biz-rows{border-top:1px solid var(--line)}
+  .biz-row{display:grid;grid-template-columns: 80px 1fr 1.4fr 120px;gap:32px;align-items:center;padding: 34px 0;border-bottom:1px solid var(--line);transition:color .3s ease;}
+  @media (max-width:900px){.biz-row{grid-template-columns:60px 1fr;gap:12px}.biz-row .biz-desc,.biz-row .biz-arrow{display:none}}
+  .biz-row:hover{color:var(--accent)}
+  .biz-row .biz-num{font-family:var(--font-display);font-size:13px;letter-spacing:.18em;color:var(--ink-40)}
+  .biz-row:hover .biz-num{color:var(--accent)}
+  .biz-row h5{font-family:var(--font-display);font-weight:300;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.02em}
+  .biz-row .biz-desc{font-size:14px;color:var(--ink-60);line-height:1.6}
+  .biz-row .biz-arrow{width:44px;height:44px;border:1px solid var(--ink-20);border-radius:50%;display:grid;place-items:center;justify-self:end;transition:all .4s ease;}
+  .biz-row:hover .biz-arrow{border-color:var(--accent);background:var(--accent);color:#fff;transform:rotate(-45deg)}
+  .biz-row .biz-arrow svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+  /* Our Labs — SSO/IM preview (new) */
+  .labs{
+    background:#0A0A0A;color:#fff;
+    padding: 140px var(--pad-x);
+    position:relative;overflow:hidden;
+  }
+  .labs::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+  }
+  .labs-inner{max-width:var(--container);margin:0 auto;position:relative}
+  .labs .eyebrow{color:rgba(255,255,255,.5)}
+  .labs .eyebrow::before{background:rgba(255,255,255,.4)}
+  .labs-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+  @media (max-width:900px){.labs-head{grid-template-columns:1fr;gap:24px}}
+  .labs-head h2{
+    font-family:var(--font-display);font-weight:200;
+    font-size:clamp(36px,5vw,68px);line-height:1.08;letter-spacing:-.02em;
+  }
+  .labs-head h2 em{font-style:italic;color:var(--accent);font-family:"Cormorant Garamond",serif;font-weight:400}
+  .labs-head p{color:rgba(255,255,255,.6);font-size:15.5px;line-height:1.85;max-width:52ch}
+  .labs-head p b{color:#fff;font-weight:500}
+
+  .labs-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media (max-width:900px){.labs-cards{grid-template-columns:1fr}}
+  .lab-card{
+    border:1px solid rgba(255,255,255,.12);padding:36px 32px 32px;
+    display:flex;flex-direction:column;gap:20px;min-height:340px;position:relative;
+    transition: all .4s ease;background:rgba(255,255,255,.02);
+  }
+  .lab-card:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
+  .lab-card .eta{
+    position:absolute;top:20px;right:20px;
+    font-family:var(--font-display);font-size:10px;letter-spacing:.2em;
+    color:var(--accent);padding:4px 10px;border:1px solid var(--accent);border-radius:999px;text-transform:uppercase;
+  }
+  .lab-card .ltag{font-family:var(--font-display);font-size:11px;letter-spacing:.22em;color:rgba(255,255,255,.5);text-transform:uppercase}
+  .lab-card h4{font-family:var(--font-display);font-weight:300;font-size:40px;letter-spacing:-.02em;line-height:1;margin-top:auto}
+  .lab-card h4 em{font-style:italic;color:var(--accent);font-family:"Cormorant Garamond",serif;font-weight:400}
+  .lab-card .lsub{font-family:var(--font-display);font-size:14px;letter-spacing:.06em;color:rgba(255,255,255,.7);text-transform:uppercase}
+  .lab-card p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.8}
+  .lab-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  .lab-card ul li{font-family:var(--font-display);font-size:10.5px;letter-spacing:.08em;padding:3px 9px;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:rgba(255,255,255,.7)}
+
+  .labs-note{
+    margin-top:60px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    font-family:var(--font-display);font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.5);
+  }
+  .labs-note .wait{color:var(--accent)}
+
+  /* News */
+  .news-preview{padding: 140px 0;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  @media (max-width:900px){.news-grid{grid-template-columns:1fr}}
+  .news-card{border:1px solid var(--line);padding: 28px;background:var(--bg);display:flex;flex-direction:column;gap:20px;min-height:320px;transition:all .4s ease;cursor:pointer;}
+  .news-card:hover{border-color:var(--ink);transform:translateY(-4px)}
+  .news-card .cat{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--accent);}
+  .news-card h5{font-family:var(--font-display);font-weight:500;font-size:19px;line-height:1.4;letter-spacing:-.01em;flex:1}
+  .news-card .meta{display:flex;justify-content:space-between;color:var(--ink-40);font-size:12px;font-family:var(--font-display);letter-spacing:.08em}
+  .news-thumb{aspect-ratio:16/9;background:#EEF1F4;position:relative;overflow:hidden;margin: -28px -28px 0;}
+  .news-thumb::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg, transparent 0 20px, rgba(10,10,10,.04) 20px 21px);}
+  .news-thumb .mini{position:absolute;top:16px;left:16px;font-family:var(--font-display);font-size:10px;letter-spacing:.18em;color:var(--ink-40)}
+
+  /* CTA band */
+  .cta-band{background:var(--ink);color:var(--bg);padding: 120px var(--pad-x)}
+  .cta-inner{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns: 1fr auto;gap:40px;align-items:end}
+  @media (max-width:900px){.cta-inner{grid-template-columns:1fr}}
+  .cta-inner h2{font-family:var(--font-display);font-weight:200;font-size:clamp(36px,5vw,80px);line-height:1.05;letter-spacing:-.03em;max-width:20ch}
+  .cta-inner h2 em{font-style:italic;color:var(--accent);font-weight:400;font-family:"Cormorant Garamond",serif}
+  .cta-btn{border:1px solid rgba(255,255,255,.3);padding:18px 28px;border-radius:999px;font-family:var(--font-display);font-size:13px;letter-spacing:.12em;display:inline-flex;align-items:center;gap:14px;transition:all .3s}
+  .cta-btn:hover{background:var(--accent);border-color:var(--accent)}
+  .cta-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+</style>
+</head>
+<body>
+
+<div id="ss-header"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top" data-screen-label="01 Hero">
+  <div class="hero-grid"></div>
+  <div class="hero-meta">
+    <span><span class="dot"></span>SECURITY TECHNOLOGY DISTRIBUTOR · EST. 2015</span>
+    <span id="liveClock">SEOUL · KR</span>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-kicker"><span class="kdot"></span>KOREA · AUTHORIZED DISTRIBUTOR</div>
+    <h1 class="hero-title">
+      <span class="line"><span>검증된 보안 기술,</span></span>
+      <span class="line"><span>한 곳에서 <em>큐레이션</em>합니다.</span></span>
+    </h1>
+    <p class="hero-sub">
+      SAFESQUARE는 국내·외 선도 보안 기업의 <b>공식 총판·기술 파트너</b>로서
+      보안컨설팅, 엔드포인트, 데이터 보안, Cloud SIEM, 인증, 접근제어까지
+      <b>6개 카테고리의 검증된 솔루션</b>을 도입 진단부터 구축·운영까지 책임집니다.
+    </p>
+  </div>
+
+  <div class="hero-foot-wrap">
+    <div class="trusted-label" data-reveal>
+      <span>TRUSTED TECHNOLOGY PARTNERS</span>
+      <span class="count">6 VENDORS · 1 CONTRACT</span>
+    </div>
+    <div class="partner-strip">
+      <div class="partner-cell" data-reveal><div class="pname">NSHC</div><div class="prole">Security Consulting</div></div>
+      <div class="partner-cell" data-reveal data-reveal-delay="1"><div class="pname">Everyzone</div><div class="prole">Anti-Ransomware</div></div>
+      <div class="partner-cell" data-reveal data-reveal-delay="2"><div class="pname">Bluemoon Soft</div><div class="prole">Document DRM</div></div>
+      <div class="partner-cell" data-reveal data-reveal-delay="3"><div class="pname">Sumo Logic</div><div class="prole">Cloud SIEM</div></div>
+      <div class="partner-cell" data-reveal data-reveal-delay="4"><div class="pname">KICA</div><div class="prole">MFA · FIDO · PKI</div></div>
+      <div class="partner-cell" data-reveal data-reveal-delay="5"><div class="pname">PNP Secure</div><div class="prole">Access Control</div></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat" data-reveal><div class="num"><span data-count="6">0</span></div><div class="lbl">TECHNOLOGY PARTNERS</div></div>
+      <div class="stat" data-reveal data-reveal-delay="1"><div class="num"><span data-count="240">0</span><sup>+</sup></div><div class="lbl">DEPLOYMENT PROJECTS</div></div>
+      <div class="stat" data-reveal data-reveal-delay="2"><div class="num"><span data-count="11">0</span><sup>YRS</sup></div><div class="lbl">DISTRIBUTION HISTORY</div></div>
+      <div class="stat" data-reveal data-reveal-delay="3"><div class="num">24<sup>/7</sup></div><div class="lbl">TECHNICAL SUPPORT</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>AUTHORIZED DISTRIBUTOR</span>
+    <span>TECHNICAL PARTNER</span>
+    <span>LICENSING &amp; RENEWAL</span>
+    <span>PROOF OF CONCEPT</span>
+    <span>DEPLOYMENT &amp; INTEGRATION</span>
+    <span>24/7 SUPPORT</span>
+    <span>TRAINING &amp; CERTIFICATION</span>
+    <span>AUTHORIZED DISTRIBUTOR</span>
+    <span>TECHNICAL PARTNER</span>
+    <span>LICENSING &amp; RENEWAL</span>
+    <span>PROOF OF CONCEPT</span>
+    <span>DEPLOYMENT &amp; INTEGRATION</span>
+    <span>24/7 SUPPORT</span>
+    <span>TRAINING &amp; CERTIFICATION</span>
+  </div>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about-preview">
+  <div class="section-index">— 01 / ABOUT</div>
+  <div class="container">
+    <div class="section-head">
+      <div data-reveal>
+        <div class="eyebrow">ABOUT SAFESQUARE</div>
+        <h2 class="section-title" style="margin-top:28px">제품을 파는 대신,<br><em>보안 체계를 설계합니다.</em></h2>
+      </div>
+      <p class="section-lede" data-reveal data-reveal-delay="1">
+        SAFESQUARE는 단일 벤더가 해결할 수 없는 보안 과제를
+        <b>여러 기술의 조합</b>으로 설계합니다. 우리는 제품 판매가 아닌
+        문제 해결을 기준으로 파트너를 선정합니다.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-visual" data-reveal>
+        <span class="corner tl">FIG 01</span>
+        <span class="corner tr">2026 EDITION</span>
+        <span class="corner bl">SAFESQUARE</span>
+        <span class="corner br">PARTNER / 06</span>
+        <div class="diagram">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+            <!-- concentric rings -->
+            <circle class="dgm-ring" cx="200" cy="250" r="80"/>
+            <circle class="dgm-ring dashed" cx="200" cy="250" r="140"/>
+            <circle class="dgm-ring" cx="200" cy="250" r="200"/>
+
+            <!-- radial axes -->
+            <line class="dgm-axis" x1="200" y1="30" x2="200" y2="470"/>
+            <line class="dgm-axis" x1="20" y1="250" x2="380" y2="250"/>
+            <line class="dgm-axis" x1="72" y1="122" x2="328" y2="378"/>
+            <line class="dgm-axis" x1="328" y1="122" x2="72" y2="378"/>
+
+            <!-- axis ticks at outer ring -->
+            <g fill="rgba(10,10,10,.2)">
+              <circle cx="200" cy="50" r="1"/>
+              <circle cx="200" cy="450" r="1"/>
+              <circle cx="50" cy="250" r="1"/>
+              <circle cx="350" cy="250" r="1"/>
+            </g>
+
+            <!-- curved connection lines (center to each node) -->
+            <path class="dgm-line" d="M200 218 Q 160 180, 100 90"/>
+            <path class="dgm-line" d="M200 218 Q 240 180, 300 90"/>
+            <path class="dgm-line" d="M188 250 Q 140 250, 70 250"/>
+            <path class="dgm-line" d="M212 250 Q 260 250, 330 250"/>
+            <path class="dgm-line" d="M200 282 Q 160 320, 100 410"/>
+            <path class="dgm-line" d="M200 282 Q 240 320, 300 410"/>
+
+            <!-- center pulse + core -->
+            <circle class="dgm-pulse" cx="200" cy="250" r="44"/>
+            <circle class="dgm-center" cx="200" cy="250" r="32"/>
+            <rect class="dgm-center-mark" x="196" y="246" width="8" height="8" opacity=".9"/>
+            <text class="dgm-center-text" x="200" y="238" text-anchor="middle">SAFESQUARE</text>
+            <text class="dgm-center-sub" x="200" y="268" text-anchor="middle">DISTRIBUTOR</text>
+
+            <!-- 6 partner nodes (tiles w/ name + category) -->
+            <!-- 01 NSHC — top-left -->
+            <g class="dgm-node">
+              <circle class="dot" cx="100" cy="90"/>
+              <rect class="tile" x="24" y="62" width="98" height="42"/>
+              <text class="nno" x="30" y="72">01</text>
+              <text class="nname" x="30" y="85">NSHC</text>
+              <text class="ncat" x="30" y="96">CONSULTING</text>
+            </g>
+            <!-- 02 Everyzone — top-right -->
+            <g class="dgm-node">
+              <circle class="dot" cx="300" cy="90"/>
+              <rect class="tile" x="278" y="62" width="98" height="42"/>
+              <text class="nno" x="284" y="72">02</text>
+              <text class="nname" x="284" y="85">Everyzone</text>
+              <text class="ncat" x="284" y="96">ENDPOINT</text>
+            </g>
+            <!-- 03 Bluemoon — left -->
+            <g class="dgm-node">
+              <circle class="dot" cx="70" cy="250"/>
+              <rect class="tile" x="-6" y="228" width="76" height="42"/>
+              <text class="nno" x="0" y="238">03</text>
+              <text class="nname" x="0" y="251">Bluemoon</text>
+              <text class="ncat" x="0" y="262">DRM</text>
+            </g>
+            <!-- 04 Sumo Logic — right -->
+            <g class="dgm-node">
+              <circle class="dot" cx="330" cy="250"/>
+              <rect class="tile" x="330" y="228" width="82" height="42"/>
+              <text class="nno" x="336" y="238">04</text>
+              <text class="nname" x="336" y="251">Sumo Logic</text>
+              <text class="ncat" x="336" y="262">CLOUD SIEM</text>
+            </g>
+            <!-- 05 KICA — bottom-left -->
+            <g class="dgm-node">
+              <circle class="dot" cx="100" cy="410"/>
+              <rect class="tile" x="24" y="396" width="98" height="42"/>
+              <text class="nno" x="30" y="406">05</text>
+              <text class="nname" x="30" y="419">KICA</text>
+              <text class="ncat" x="30" y="430">MFA · FIDO</text>
+            </g>
+            <!-- 06 PNP Secure — bottom-right -->
+            <g class="dgm-node">
+              <circle class="dot" cx="300" cy="410"/>
+              <rect class="tile" x="278" y="396" width="98" height="42"/>
+              <text class="nno" x="284" y="406">06</text>
+              <text class="nname" x="284" y="419">PNP Secure</text>
+              <text class="ncat" x="284" y="430">ACCESS CTRL</text>
+            </g>
+
+            <!-- tiny measurement labels -->
+            <text x="200" y="44" text-anchor="middle" font-family="Manrope" font-size="5" letter-spacing=".2em" fill="rgba(10,10,10,.3)">N</text>
+            <text x="360" y="252" text-anchor="middle" font-family="Manrope" font-size="5" letter-spacing=".2em" fill="rgba(10,10,10,.3)">E</text>
+            <text x="200" y="464" text-anchor="middle" font-family="Manrope" font-size="5" letter-spacing=".2em" fill="rgba(10,10,10,.3)">S</text>
+            <text x="40" y="252" text-anchor="middle" font-family="Manrope" font-size="5" letter-spacing=".2em" fill="rgba(10,10,10,.3)">W</text>
+          </svg>
+        </div>
+        <div class="label">FIG 01 · PARTNER ECOSYSTEM</div>
+      </div>
+      <div class="about-copy">
+        <div data-reveal><div class="eyebrow">OUR ROLE</div></div>
+        <h3 data-reveal data-reveal-delay="1">검증된 기술을 <em>연결</em>하고,<br>조직의 보안 체계로 <em>완성</em>합니다.</h3>
+        <p data-reveal data-reveal-delay="2">
+          SAFESQUARE는 <b>공식 총판이자 구축 파트너</b>입니다.
+          각 영역에서 기술적으로 가장 성숙한 제품을 선별해 공급하고,
+          고객 환경에 맞춘 <b>진단 · 설계 · PoC · 구축 · 운영 지원</b>을
+          단일 계약으로 제공합니다.
+        </p>
+        <p data-reveal data-reveal-delay="3">
+          단순 리셀러와 다른 점은 <b>조직 전체의 보안 아키텍처를 함께 설계</b>한다는 것.
+          여러 벤더 제품이 서로 간섭 없이 동작하도록 연계 구성과 정책을 표준화합니다.
+        </p>
+        <a href="about.html" class="link-arr" data-reveal data-reveal-delay="4">
+          회사소개 전체 보기 <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY SAFESQUARE ===================== -->
+<section class="why">
+  <div class="section-index">— 02 / WHY</div>
+  <div class="container">
+    <div class="sec-heading" style="padding-top:0;padding-bottom:48px">
+      <div class="inner">
+        <div data-reveal>
+          <div class="eyebrow">WHY SAFESQUARE</div>
+          <h2 class="section-title" style="margin-top:28px">유통사를 고르는 기준은<br><em>공급이 아니라 책임입니다.</em></h2>
+        </div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">
+          우리는 판매 계약 이후의 긴 시간 — 설치, 운영, 갱신, 사고 대응까지 —
+          고객과 같은 편에 서 있습니다. 그게 SAFESQUARE를 선택하는 4가지 이유입니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-cell" data-reveal>
+        <div class="no">VALUE / 01</div>
+        <div class="glyph">
+          <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h4>기술 심사 기반<br>벤더 선정</h4>
+        <p>무작위 포트폴리오가 아닙니다. 실환경 PoC를 통해 성능·안정성·지원체계가 검증된 벤더만 취급합니다.</p>
+      </div>
+      <div class="why-cell" data-reveal data-reveal-delay="1">
+        <div class="no">VALUE / 02</div>
+        <div class="glyph">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h4>단일 계약으로<br>통합 도입</h4>
+        <p>6개 파트너 제품을 별도 계약할 필요가 없습니다. 라이선스·갱신·지원까지 단일 창구로 운영합니다.</p>
+      </div>
+      <div class="why-cell" data-reveal data-reveal-delay="2">
+        <div class="no">VALUE / 03</div>
+        <div class="glyph">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h4>24/7 기술 지원<br>&amp; SLA</h4>
+        <p>벤더사 대응을 기다리지 않습니다. 국내 기술 엔지니어가 1차 대응을 책임지며 평균 응답 15분.</p>
+      </div>
+      <div class="why-cell" data-reveal data-reveal-delay="3">
+        <div class="no">VALUE / 04</div>
+        <div class="glyph">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </div>
+        <h4>아키텍처 설계<br>&amp; 통합 컨설팅</h4>
+        <p>여러 제품이 한 조직 안에서 서로 간섭 없이 동작하도록 표준 정책과 연계 설계를 함께 제공합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section class="solutions-preview" id="portfolio">
+  <div class="section-index">— 03 / PORTFOLIO</div>
+  <div class="container">
+    <div class="sec-heading">
+      <div class="inner">
+        <div data-reveal>
+          <div class="eyebrow">TECHNOLOGY PORTFOLIO</div>
+          <h2 class="section-title" style="margin-top:28px">6개 카테고리,<br><em>6개 기술 파트너.</em></h2>
+        </div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">
+          컨설팅부터 엔드포인트, 데이터, Cloud SIEM, 인증, 접근제어까지
+          각 영역의 <b>국내·외 선도 기업과 정식 총판 계약</b>을 체결하고 공급합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="prod-grid">
+      <a href="solutions/nshc.html" class="prod" data-reveal>
+        <div class="head"><span class="mark">N</span><span class="cat">SECURITY SERVICES</span></div>
+        <div><div class="no">PORTFOLIO / 01</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">NSHC</span></div>
+        <h4>보안컨설팅 &amp;<br>공격 시뮬레이션</h4>
+        <p>모의해킹, 취약점 진단, CTI, ASM, 다크웹 모니터링. 공격자의 시각으로 보안 수준을 검증·개선합니다.</p>
+        <div class="tags"><span class="tag">Pentest</span><span class="tag">CTI</span><span class="tag">ASM</span><span class="tag">Darkweb</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+
+      <a href="solutions/everyzone.html" class="prod" data-reveal data-reveal-delay="1">
+        <div class="head"><span class="mark">E</span><span class="cat">ENDPOINT</span></div>
+        <div><div class="no">PORTFOLIO / 02</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">에브리존</span></div>
+        <h4>안티랜섬웨어<br>엔드포인트 보안</h4>
+        <p>행위 기반 랜섬웨어 차단과 실시간 백업·복원. 업무 중단 없이 위협을 격리합니다.</p>
+        <div class="tags"><span class="tag">Anti-Ransom</span><span class="tag">Backup</span><span class="tag">Rollback</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+
+      <a href="solutions/bluemoon.html" class="prod" data-reveal data-reveal-delay="2">
+        <div class="head"><span class="mark">B</span><span class="cat">DATA SECURITY</span></div>
+        <div><div class="no">PORTFOLIO / 03</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">블루문소프트</span></div>
+        <h4>문서보안 · DRM</h4>
+        <p>문서 생성 시점부터 암호화하여 유출을 차단. Office · CAD · PDF · 협업툴 전반을 포괄합니다.</p>
+        <div class="tags"><span class="tag">DRM</span><span class="tag">DLP</span><span class="tag">Encryption</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+
+      <a href="solutions/sumologic.html" class="prod" data-reveal>
+        <div class="head"><span class="mark">S</span><span class="cat">CLOUD SIEM</span></div>
+        <div><div class="no">PORTFOLIO / 04</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">Sumo Logic</span></div>
+        <h4>클라우드 네이티브<br>SIEM (SaaS)</h4>
+        <p>멀티클라우드·SaaS 로그를 단일 SIEM으로 통합. 위협 인텔리전스 기반 자동 탐지·대응.</p>
+        <div class="tags"><span class="tag">SIEM</span><span class="tag">SaaS</span><span class="tag">Cloud</span><span class="tag">SOAR</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+
+      <a href="solutions/kica.html" class="prod" data-reveal data-reveal-delay="1">
+        <div class="head"><span class="mark">K</span><span class="cat">IDENTITY</span></div>
+        <div><div class="no">PORTFOLIO / 05</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">한국정보인증</span></div>
+        <h4>다중요소인증<br>(MFA)</h4>
+        <p>OTP·FIDO2·PKI·생체인증을 단일 인증 체계로. 공공 기준의 신뢰도로 내부 접근을 보호합니다.</p>
+        <div class="tags"><span class="tag">MFA</span><span class="tag">FIDO2</span><span class="tag">OTP</span><span class="tag">PKI</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+
+      <a href="solutions/pnpsecure.html" class="prod" data-reveal data-reveal-delay="2">
+        <div class="head"><span class="mark">P</span><span class="cat">ACCESS CONTROL</span></div>
+        <div><div class="no">PORTFOLIO / 06</div></div>
+        <div class="partner-line"><span class="ptag">Partner</span><span class="pname">피앤피시큐어</span></div>
+        <h4>DB·서버 접근제어<br>&amp; 지속인증</h4>
+        <p>DB/서버/클라우드 접근을 정책 기반으로 통제하고 모든 명령을 불변 로그로 기록. 개인정보 접속기록 의무 대응.</p>
+        <div class="tags"><span class="tag">DB 접근제어</span><span class="tag">Server</span><span class="tag">개인정보 로그</span><span class="tag">Continuous</span></div>
+        <span class="more">자세히 보기 <span class="arr">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICE FLOW ===================== -->
+<section class="flow">
+  <div class="section-index">— 04 / PROCESS</div>
+  <div class="container">
+    <div class="sec-heading">
+      <div class="inner">
+        <div data-reveal>
+          <div class="eyebrow">DELIVERY PROCESS</div>
+          <h2 class="section-title" style="margin-top:28px">도입은 계약이 아니라<br><em>5단계의 엔지니어링</em>입니다.</h2>
+        </div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">
+          SAFESQUARE의 도입 프로세스는 단순 납품이 아닙니다.
+          평균 <b>6–14주</b>에 걸쳐 진단부터 운영 이관까지 전 과정을 책임집니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step" data-reveal>
+        <h5>현황 진단</h5>
+        <p>현 보안 자산·정책·컴플라이언스 현황을 파악합니다. 리스크 맵과 갭 분석 결과를 문서로 제출합니다.</p>
+        <span class="tag">Week 1–2</span>
+      </div>
+      <div class="flow-step" data-reveal data-reveal-delay="1">
+        <h5>아키텍처 설계</h5>
+        <p>진단 결과에 맞는 벤더 조합과 연계 구성을 설계합니다. 총 소요 비용과 롤아웃 계획을 함께 제시합니다.</p>
+        <span class="tag">Week 2–4</span>
+      </div>
+      <div class="flow-step active" data-reveal data-reveal-delay="2">
+        <h5>PoC · 검증</h5>
+        <p>실환경 샘플에서 성능·호환성·운영 편의성을 검증합니다. 벤더 엔지니어가 동반 참여합니다.</p>
+        <span class="tag">Week 3–6</span>
+      </div>
+      <div class="flow-step" data-reveal data-reveal-delay="3">
+        <h5>구축 · 연계</h5>
+        <p>라이선스 발행, 설치, 타 솔루션 연계, 정책 이식을 진행합니다. 변경관리 프로세스를 준수합니다.</p>
+        <span class="tag">Week 5–10</span>
+      </div>
+      <div class="flow-step" data-reveal data-reveal-delay="4">
+        <h5>운영 이관</h5>
+        <p>고객 운영팀 교육, 표준 플레이북, 24/7 기술지원 계약으로 이관합니다. 분기별 정기 리뷰를 동반합니다.</p>
+        <span class="tag">Week 10+</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUSINESS ===================== -->
+<section class="biz-preview">
+  <div class="section-index">— 05 / INDUSTRIES</div>
+  <div class="container">
+    <div class="sec-heading">
+      <div class="inner">
+        <div data-reveal>
+          <div class="eyebrow">INDUSTRIES WE SERVE</div>
+          <h2 class="section-title" style="margin-top:28px">규제 산업부터 민간까지,<br><em>현장의 요구를 압니다.</em></h2>
+        </div>
+        <p class="section-lede" data-reveal data-reveal-delay="1">
+          각 산업의 컴플라이언스와 운영 특성에 맞춘 레퍼런스 구성으로 빠른 도입을 지원합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="biz-rows">
+      <a class="biz-row" href="business.html#finance" data-reveal><span class="biz-num">01</span><h5>금융 · 보험</h5><p class="biz-desc">전자금융감독·개인정보보호법 기반 통합 보안 · 인증 · 로깅</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+      <a class="biz-row" href="business.html#public" data-reveal><span class="biz-num">02</span><h5>공공 · 교육</h5><p class="biz-desc">국정원 보안 요구조건 · CC 인증 기반 내부망 · 재택근무 보안</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+      <a class="biz-row" href="business.html#enterprise" data-reveal><span class="biz-num">03</span><h5>대기업 · 제조</h5><p class="biz-desc">글로벌 거점 통합 인증 · 영업기밀 문서보안 · OT 네트워크 격리</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+      <a class="biz-row" href="business.html#medical" data-reveal><span class="biz-num">04</span><h5>의료 · 제약</h5><p class="biz-desc">의료정보 접근제어 · 연구 데이터 유출 방지 · HIPAA 대응</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+      <a class="biz-row" href="business.html#cloud" data-reveal><span class="biz-num">05</span><h5>SaaS · IT 플랫폼</h5><p class="biz-desc">Cloud SIEM 기반 멀티클라우드 통합관제 · ISMS-P 대응</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+      <a class="biz-row" href="business.html#retail" data-reveal><span class="biz-num">06</span><h5>리테일 · 커머스</h5><p class="biz-desc">결제 시스템 접근제어 · 고객정보 로깅 · PCI-DSS 대응</p><span class="biz-arrow"><svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUR LABS (SSO/IM coming 2026) ===================== -->
+<section class="labs" id="labs">
+  <div class="labs-inner">
+    <div class="labs-head">
+      <div data-reveal>
+        <div class="eyebrow">OUR LABS · IN DEVELOPMENT</div>
+        <h2 style="margin-top:28px">유통을 넘어,<br><em>자체 개발</em>까지.</h2>
+      </div>
+      <p data-reveal data-reveal-delay="1">
+        <b>SAFESQUARE Labs</b>는 11년간 쌓인 도입·운영 데이터를 기반으로
+        고객 현장에서 가장 많이 요청된 두 영역 — <b>SSO와 IM</b> 제품을
+        자체 개발 중입니다. <b>2026년 하반기 정식 출시 예정.</b>
+      </p>
+    </div>
+
+    <div class="labs-cards">
+      <div class="lab-card" data-reveal>
+        <span class="eta">Coming 2026 Q3</span>
+        <span class="ltag">Product / 01</span>
+        <div style="flex:1"></div>
+        <h4><em>Square</em>SSO</h4>
+        <div class="lsub">Single Sign-On</div>
+        <p>SAML 2.0 · OIDC · OAuth 2.1 기반 엔터프라이즈 SSO. 온프레미스와 SaaS를 하나의 ID로 연결합니다.</p>
+        <ul><li>SAML 2.0</li><li>OIDC</li><li>SCIM</li><li>MFA 연동</li><li>Adaptive Auth</li></ul>
+      </div>
+      <div class="lab-card" data-reveal data-reveal-delay="1">
+        <span class="eta">Coming 2026 Q4</span>
+        <span class="ltag">Product / 02</span>
+        <div style="flex:1"></div>
+        <h4><em>Square</em>IM</h4>
+        <div class="lsub">Identity Management</div>
+        <p>입·퇴사·조직 변경 이벤트에 맞춰 권한을 자동으로 프로비저닝·회수하는 IM 플랫폼. 감사 대응까지 자동화.</p>
+        <ul><li>JML 자동화</li><li>Access Review</li><li>SCIM</li><li>워크플로우</li><li>감사 리포트</li></ul>
+      </div>
+    </div>
+
+    <div class="labs-note">
+      <span>※ 본 제품군은 개발 중이며 사양은 변경될 수 있습니다.</span>
+      <a href="contact.html" class="wait">얼리억세스 대기 등록 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section class="news-preview">
+  <div class="section-index">— 06 / NEWS</div>
+  <div class="container">
+    <div class="sec-heading" style="padding-top:0">
+      <div class="inner">
+        <div data-reveal>
+          <div class="eyebrow">NEWS &amp; INSIGHTS</div>
+          <h2 class="section-title" style="margin-top:28px">파트너십과 현장에서<br><em>새로운 기준을 만듭니다.</em></h2>
+        </div>
+        <a class="link-arr" href="news.html" data-reveal data-reveal-delay="1" style="justify-self:end;align-self:end">전체 뉴스 <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <div class="news-grid">
+      <a href="news.html" class="news-card" data-reveal>
+        <div class="news-thumb"><span class="mini">PARTNERSHIP</span></div>
+        <div class="cat">PARTNERSHIP</div>
+        <h5>SAFESQUARE, Sumo Logic Cloud SIEM 국내 공식 파트너 계약 체결</h5>
+        <div class="meta"><span>RELEASE</span><span>2026.03.28</span></div>
+      </a>
+      <a href="news.html" class="news-card" data-reveal data-reveal-delay="1">
+        <div class="news-thumb"><span class="mini">CASE STUDY</span></div>
+        <div class="cat">CASE STUDY</div>
+        <h5>A 금융그룹, NSHC·피앤피시큐어 통합 도입으로 내부통제 고도화</h5>
+        <div class="meta"><span>CASE</span><span>2026.02.19</span></div>
+      </a>
+      <a href="news.html" class="news-card" data-reveal data-reveal-delay="2">
+        <div class="news-thumb"><span class="mini">LABS</span></div>
+        <div class="cat">OUR LABS</div>
+        <h5>자체 개발 SSO/IM '2026 하반기 얼리억세스' 프로그램 오픈 예정</h5>
+        <div class="meta"><span>ANNOUNCE</span><span>2026.01.30</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 data-reveal>보안 설계의<br>첫 <em>상담</em>부터<br>시작하세요.</h2>
+    <a class="cta-btn" href="contact.html" data-reveal data-reveal-delay="1">
+      도입 문의 · PoC 요청
+      <svg viewBox="0 0 14 14"><path d="M1 13L13 1M13 1H4M13 1V10"/></svg>
+    </a>
+  </div>
+</section>
+
+<div id="ss-footer"></div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 245,
+  "animations": true,
+  "displayFont": "serif"
+}/*EDITMODE-END*/;
+</script>
+<script src="assets/shared.js"></script>
+<script>
+  ssInit('');
+  requestAnimationFrame(()=>document.body.classList.add('loaded'));
+
+  // Live clock
+  function updateClock(){
+    const opts = {timeZone:'Asia/Seoul', hour:'2-digit', minute:'2-digit', hour12:false};
+    const t = new Intl.DateTimeFormat('en-GB', opts).format(new Date());
+    const el = document.getElementById('liveClock');
+    if(el) el.textContent = 'SEOUL · ' + t + ' KST';
+  }
+  updateClock(); setInterval(updateClock, 30000);
+</script>
+</body>
+</html>

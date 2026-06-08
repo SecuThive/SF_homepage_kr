@@ -1,0 +1,104 @@
+[
+  {
+    "id": "smartcity",
+    "num": "01",
+    "tag": "CITY / PUBLIC SAFETY",
+    "title": "스마트시티 · 공공안전",
+    "desc": "수만 대 규모의 광역 CCTV를 단일 관제 플랫폼에서 운영합니다. 도시 전역 이벤트를 실시간으로 상관분석해 재난·범죄·혼잡을 선제적으로 감지하고, 관제 요원의 대응 시간을 획기적으로 단축합니다.",
+    "capabilities": [
+      "광역 CCTV 단일 통합관제 (최대 50,000채널)",
+      "다중 이벤트 실시간 상관분석",
+      "재난·범죄·혼잡 AI 선제 감지",
+      "군중밀도 모니터링 및 경보",
+      "GIS 기반 공간 이벤트 시각화"
+    ],
+    "statVal": "50K+",
+    "statUnit": "채널",
+    "refs": ["METRO CITY", "CITY OF SEOUL", "K-RAIL"]
+  },
+  {
+    "id": "finance",
+    "num": "02",
+    "tag": "FINANCE / DATA CENTER",
+    "title": "금융 · 데이터센터",
+    "desc": "Tier-III급 이상 시설의 출입·영상 통합관제를 구현합니다. Zero-Trust 기반 정책 엔진과 불변 감사 이력으로 금융당국 및 ISMS-P의 가장 엄격한 규제 요건에 완전 대응합니다.",
+    "capabilities": [
+      "Zero-Trust 다중 인증 출입통제",
+      "불변 감사 이력·영상 연동 저장",
+      "이상 출입 패턴 자동 탐지",
+      "ISMS-P / 금융감독원 규정 자동화",
+      "침입 탐지·알림 이중화 체계"
+    ],
+    "statVal": "100%",
+    "statUnit": "규정 준수율",
+    "refs": ["HANBIT BANK", "ATLAS DC", "VERITAS RES"]
+  },
+  {
+    "id": "industrial",
+    "num": "03",
+    "tag": "INDUSTRIAL / LOGISTICS",
+    "title": "산업·물류 · 제조",
+    "desc": "공장·창고의 작업자 안전 모니터링부터 PPE 미착용 감지, 동선·작업 이상 감지까지 커버합니다. 현장 사고를 줄이고 생산성을 높이며, 안전 보고서를 자동 생성합니다.",
+    "capabilities": [
+      "PPE(보호구) 착용 여부 실시간 감지",
+      "작업자 동선 이상 및 위험 구역 침입 탐지",
+      "장비 가동 이상·정지 감지",
+      "자동 안전사고 보고서 생성",
+      "지게차·AGV 충돌 예측 경보"
+    ],
+    "statVal": "62%",
+    "statUnit": "산재 감소율",
+    "refs": ["NOVA LOGIS", "HORIZON ENG", "DAEYANG PORT"]
+  },
+  {
+    "id": "mobility",
+    "num": "04",
+    "tag": "TRANSIT / MOBILITY",
+    "title": "교통 · 모빌리티",
+    "desc": "지하철·공항·터미널에서의 이상행동 탐지, 군중밀도 관리, 물체 유실 감지를 실시간으로 처리합니다. 대중교통의 일상적 안전과 운영 효율을 동시에 확보합니다.",
+    "capabilities": [
+      "승강장·개찰구 이상행동 즉시 탐지",
+      "실시간 군중밀도 측정 및 경보",
+      "유기물·방치 수하물 자동 감지",
+      "역사별 유동인구 통계·예측 분석",
+      "운행 방해 행위 자동 신고 연동"
+    ],
+    "statVal": "3분",
+    "statUnit": "평균 대응 시간",
+    "refs": ["POLARIS AIR", "K-RAIL"]
+  },
+  {
+    "id": "medical",
+    "num": "05",
+    "tag": "HEALTHCARE / RESEARCH",
+    "title": "의료 · 리서치 시설",
+    "desc": "제한구역 출입관리, 환자 낙상·이탈 감지, 민감 데이터 취급 구역의 정책 기반 로깅으로 연구·의료 현장의 신뢰성을 지킵니다. HIPAA·개인정보보호법 요건을 자동으로 충족합니다.",
+    "capabilities": [
+      "환자 낙상·이탈 즉시 감지 알림",
+      "제한구역 무단 침입 탐지",
+      "의료 폐기물 취급 구역 로깅",
+      "개인정보 마스킹 자동 처리",
+      "HIPAA·PIPA 규정 준수 보고"
+    ],
+    "statVal": "98%",
+    "statUnit": "낙상 감지 정확도",
+    "refs": ["SEJONG MED", "VERITAS RES"]
+  },
+  {
+    "id": "retail",
+    "num": "06",
+    "tag": "RETAIL / COMMERCIAL",
+    "title": "상업 · 리테일",
+    "desc": "매장 이상행동·도난 감지부터 방문객 히트맵 분석, 체류 시간 측정까지. 매장 운영 효율을 높이면서 고객 경험을 해치지 않는 정교한 균형을 제공합니다.",
+    "capabilities": [
+      "셀프계산대 도난·이상 행동 감지",
+      "매장 내 방문객 동선 히트맵",
+      "입구 체류 시간·전환율 분석",
+      "피크 타임 인력 배치 최적화 권고",
+      "VIP 구역 접근 제어 자동화"
+    ],
+    "statVal": "40%",
+    "statUnit": "절도 감소율",
+    "refs": ["PRIME RETAIL"]
+  }
+]

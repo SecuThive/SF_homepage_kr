@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>사업영역 — SAFESQUARE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .biz-main{padding: 120px 0}
+  .biz-section{padding: 80px 0;border-bottom:1px solid var(--line)}
+  .biz-section:last-child{border-bottom:0}
+  .biz-inner{display:grid;grid-template-columns: 1fr 1.2fr;gap:clamp(40px,5vw,96px);align-items:start}
+  @media (max-width:900px){.biz-inner{grid-template-columns:1fr}}
+  .biz-num-big{font-family:var(--font-display);font-weight:200;font-size:clamp(72px,10vw,160px);line-height:.9;letter-spacing:-.04em;color:var(--ink)}
+  .biz-num-big sup{font-size:.2em;color:var(--accent);font-weight:500;margin-left:10px}
+  .biz-section h3{font-family:var(--font-display);font-weight:300;font-size:clamp(30px,4vw,54px);letter-spacing:-.02em;line-height:1.1;margin:24px 0 28px}
+  .biz-section p{font-size:16px;line-height:1.85;color:var(--ink-60);max-width:58ch;margin-bottom:20px}
+  .biz-section .refs{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .biz-section .refs span{font-family:var(--font-display);font-size:11px;letter-spacing:.1em;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-60)}
+  .biz-visual{aspect-ratio:1/1;background:var(--surface);border:1px solid var(--line);position:relative;overflow:hidden}
+  .biz-visual::before{content:"";position:absolute;inset:0}
+  .biz-visual.v1::before{background:repeating-linear-gradient(0deg,transparent 0 24px,rgba(10,10,10,.05) 24px 25px),repeating-linear-gradient(90deg,transparent 0 24px,rgba(10,10,10,.05) 24px 25px)}
+  .biz-visual.v2::before{background:radial-gradient(circle at 30% 30%,rgba(10,10,10,.08),transparent 40%),radial-gradient(circle at 70% 70%,oklch(0.9 0.06 245),transparent 40%)}
+  .biz-visual.v3::before{background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(10,10,10,.04) 22px 23px)}
+  .biz-visual.v4::before{background:linear-gradient(180deg,transparent 0%,transparent 80%,rgba(10,10,10,.1) 100%),repeating-linear-gradient(90deg,transparent 0 40px,rgba(10,10,10,.05) 40px 41px)}
+  .biz-visual.v5::before{background:repeating-radial-gradient(circle at center,transparent 0 20px,rgba(10,10,10,.04) 20px 21px)}
+  .biz-visual.v6::before{background:linear-gradient(45deg,rgba(10,10,10,.05),transparent 40%,rgba(10,10,10,.05) 60%,transparent)}
+  .biz-visual .tag{position:absolute;bottom:18px;left:18px;font-family:var(--font-display);font-size:11px;letter-spacing:.18em;color:var(--ink-40)}
+</style>
+</head>
+<body>
+
+<div id="ss-header"></div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="container">
+    <div class="crumbs"><a href="index.html">HOME</a><span class="sep">/</span><span>BUSINESS</span></div>
+    <h1>도시와 산업,<br><em>공공과 민간</em><br>전반에서.</h1>
+    <p class="lede">6개 핵심 영역에서 240여 개 기업·기관과 함께합니다. 각 산업의 규제·운영 특성에 맞춘 레퍼런스 구성으로 빠른 도입을 지원합니다.</p>
+  </div>
+</section>
+
+<section class="biz-main">
+  <div class="container">
+
+    <div class="biz-section" id="smartcity" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">01<sup>—</sup></div>
+          <h3>스마트시티<br>· 공공안전</h3>
+          <p>수만 대 규모의 광역 CCTV를 단일 관제에서 운영합니다. 도시 이벤트를 실시간으로 상관분석해 재난·범죄·혼잡을 선제적으로 감지합니다.</p>
+          <div class="refs"><span>METRO CITY</span><span>CITY OF SEOUL</span><span>K-RAIL</span></div>
+        </div>
+        <div class="biz-visual v1"><span class="tag">CITY / PUBLIC</span></div>
+      </div>
+    </div>
+
+    <div class="biz-section" id="finance" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">02<sup>—</sup></div>
+          <h3>금융<br>· 데이터센터</h3>
+          <p>Tier-III급 이상 시설의 출입·영상 통합관제. Zero-Trust 기반 정책 엔진과 감사 이력으로 가장 엄격한 규제에 대응합니다.</p>
+          <div class="refs"><span>HANBIT BANK</span><span>ATLAS DC</span><span>VERITAS RES</span></div>
+        </div>
+        <div class="biz-visual v2"><span class="tag">FINANCE / DC</span></div>
+      </div>
+    </div>
+
+    <div class="biz-section" id="industrial" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">03<sup>—</sup></div>
+          <h3>산업·물류<br>· 제조</h3>
+          <p>공장·창고의 작업자 안전, PPE 미착용 감지, 동선·작업 이상 감지. 현장 사고를 줄이고 생산성을 끌어올립니다.</p>
+          <div class="refs"><span>NOVA LOGIS</span><span>HORIZON ENG</span><span>DAEYANG PORT</span></div>
+        </div>
+        <div class="biz-visual v3"><span class="tag">INDUSTRIAL</span></div>
+      </div>
+    </div>
+
+    <div class="biz-section" id="mobility" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">04<sup>—</sup></div>
+          <h3>교통<br>· 모빌리티</h3>
+          <p>지하철·공항·터미널에서의 이상행동 탐지, 군중밀도 관리, 물체 유실 감지. 대중교통의 일상적 안전을 지킵니다.</p>
+          <div class="refs"><span>POLARIS AIR</span><span>K-RAIL</span></div>
+        </div>
+        <div class="biz-visual v4"><span class="tag">MOBILITY</span></div>
+      </div>
+    </div>
+
+    <div class="biz-section" id="medical" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">05<sup>—</sup></div>
+          <h3>의료<br>· 리서치 시설</h3>
+          <p>제한구역 출입관리, 환자 낙상·이탈 감지, 민감 데이터 취급 구역의 정책기반 로깅으로 연구·의료 현장의 신뢰를 지킵니다.</p>
+          <div class="refs"><span>SEJONG MED</span><span>VERITAS RES</span></div>
+        </div>
+        <div class="biz-visual v5"><span class="tag">MEDICAL</span></div>
+      </div>
+    </div>
+
+    <div class="biz-section" id="retail" data-reveal>
+      <div class="biz-inner">
+        <div>
+          <div class="biz-num-big">06<sup>—</sup></div>
+          <h3>상업<br>· 리테일</h3>
+          <p>매장 이상행동·도난 감지, 방문객 히트맵 분석. 매장 운영 효율을 높이면서 고객 경험은 해치지 않습니다.</p>
+          <div class="refs"><span>PRIME RETAIL</span></div>
+        </div>
+        <div class="biz-visual v6"><span class="tag">RETAIL</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="ss-footer"></div>
+<script>const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"accentHue":245,"animations":true,"displayFont":"manrope"}/*EDITMODE-END*/;</script>
+<script src="assets/shared.js"></script>
+<script>ssInit('business');</script>
+</body>
+</html>

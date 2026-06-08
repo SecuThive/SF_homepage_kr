@@ -1,0 +1,43 @@
+{
+  "popups": [
+    {
+      "id": "popup_mofvnn0x",
+      "title": "test",
+      "content": "test",
+      "imageUrl": "",
+      "link": "",
+      "linkText": "자세히 보기",
+      "active": false,
+      "dismissMode": "today",
+      "startDate": "2026-04-26",
+      "endDate": "",
+      "width": 480
+    },
+    {
+      "id": "popup_mofvqdj8",
+      "title": "test2",
+      "content": "test2",
+      "imageUrl": "",
+      "link": "",
+      "linkText": "자세히 보기",
+      "active": false,
+      "dismissMode": "today",
+      "startDate": "2026-04-26",
+      "endDate": "",
+      "width": 480
+    },
+    {
+      "id": "popup_mofw1zo4",
+      "title": "test3",
+      "content": "test3",
+      "imageUrl": "",
+      "link": "",
+      "linkText": "자세히 보기",
+      "active": false,
+      "dismissMode": "today",
+      "startDate": "2026-04-26",
+      "endDate": "",
+      "width": 480
+    }
+  ]
+}

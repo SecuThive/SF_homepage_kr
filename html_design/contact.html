@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>문의하기 — SAFESQUARE</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .contact-main{padding:120px 0}
+  .contact-layout{display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,5vw,96px);align-items:start}
+  @media (max-width:900px){.contact-layout{grid-template-columns:1fr}}
+  .contact-info .block{padding:32px 0;border-bottom:1px solid var(--line)}
+  .contact-info .block:first-child{border-top:1px solid var(--line)}
+  .contact-info .k{font-family:var(--font-display);font-size:11px;letter-spacing:.2em;color:var(--ink-40)}
+  .contact-info .v{margin-top:14px;font-size:16px;line-height:1.7;color:var(--ink)}
+  .contact-info .v b{font-family:var(--font-display);font-weight:500;font-size:20px}
+  .contact-info .v a:hover{color:var(--accent)}
+  .contact-info small{display:block;color:var(--ink-60);font-size:13px;margin-top:4px}
+
+  .form{background:var(--surface);border:1px solid var(--line);padding:clamp(28px,4vw,48px)}
+  .form h3{font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:-.01em;margin-bottom:32px}
+  .field{margin-bottom:24px}
+  .field label{display:block;font-family:var(--font-display);font-size:11px;letter-spacing:.18em;color:var(--ink-40);margin-bottom:10px;text-transform:uppercase}
+  .field input,.field textarea,.field select{
+    width:100%;padding:14px 0;border:0;border-bottom:1px solid var(--line);background:transparent;
+    font-family:var(--font-kr);font-size:16px;color:var(--ink);transition:border-color .3s;
+    border-radius:0;
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-bottom-color:var(--accent)}
+  .field textarea{min-height:120px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media (max-width:600px){.row2{grid-template-columns:1fr}}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .chip{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-family:var(--font-display);font-size:12px;letter-spacing:.06em;cursor:pointer;transition:all .3s;color:var(--ink-60)}
+  .chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .submit{margin-top:32px;padding:18px 36px;background:var(--ink);color:var(--bg);border-radius:999px;font-family:var(--font-display);font-size:13px;letter-spacing:.12em;display:inline-flex;align-items:center;gap:14px;cursor:pointer;transition:all .3s}
+  .submit:hover{background:var(--accent)}
+  .consent{font-size:12px;color:var(--ink-40);margin-top:12px;display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+  .consent input{margin-top:3px}
+
+  .map{margin-top:120px;aspect-ratio:16/7;background:var(--surface);border:1px solid var(--line);position:relative;overflow:hidden}
+  .map::before{content:"";position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg,transparent 0 40px,rgba(10,10,10,.04) 40px 41px),
+    repeating-linear-gradient(90deg,transparent 0 40px,rgba(10,10,10,.04) 40px 41px)}
+  .map .pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);color:var(--accent);font-family:var(--font-display);font-size:12px;letter-spacing:.2em;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .map .pin::after{content:"";width:12px;height:12px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 6px color-mix(in oklch, var(--accent) 30%, transparent);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 6px color-mix(in oklch, var(--accent) 30%, transparent)}50%{box-shadow:0 0 0 16px transparent}}
+  .map .tag{position:absolute;bottom:18px;left:18px;font-family:var(--font-display);font-size:11px;letter-spacing:.18em;color:var(--ink-40)}
+</style>
+</head>
+<body>
+
+<div id="ss-header"></div>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="container">
+    <div class="crumbs"><a href="index.html">HOME</a><span class="sep">/</span><span>CONTACT</span></div>
+    <h1>공간의 <em>신뢰</em>를<br>함께 설계하세요.</h1>
+    <p class="lede">도입 문의, 기술 협업, 언론 취재까지 — SAFESQUARE 팀이 24시간 이내 답변드립니다.</p>
+  </div>
+</section>
+
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="block" data-reveal><div class="k">HEADQUARTERS</div><div class="v"><b>서울특별시 강남구</b><br>테헤란로 152, SAFESQUARE 타워 4F<br><small>평일 09:00 – 18:00</small></div></div>
+        <div class="block" data-reveal><div class="k">SALES</div><div class="v"><a href="mailto:sales@safesquare.io"><b>sales@safesquare.io</b></a><br>+82 2 1588 0000<br><small>도입·견적 문의</small></div></div>
+        <div class="block" data-reveal><div class="k">SUPPORT</div><div class="v"><a href="tel:15880000"><b>1588-0000</b></a><br>24/7 통합관제 지원센터<br><small>기존 고객 기술 지원</small></div></div>
+        <div class="block" data-reveal><div class="k">CAREERS</div><div class="v"><a href="mailto:jobs@safesquare.io"><b>jobs@safesquare.io</b></a><br><a href="careers.html">채용 공고 바로가기 →</a></div></div>
+        <div class="block" data-reveal><div class="k">PRESS</div><div class="v"><a href="mailto:press@safesquare.io"><b>press@safesquare.io</b></a><br><small>취재·인터뷰·자료 요청</small></div></div>
+      </div>
+
+      <form class="form" data-reveal>
+        <h3>프로젝트 문의하기</h3>
+
+        <div class="row2">
+          <div class="field"><label>성함 *</label><input type="text" placeholder="홍길동" required></div>
+          <div class="field"><label>회사/소속</label><input type="text" placeholder="SAFESQUARE Inc."></div>
+        </div>
+
+        <div class="row2">
+          <div class="field"><label>이메일 *</label><input type="email" placeholder="you@company.com" required></div>
+          <div class="field"><label>연락처</label><input type="tel" placeholder="010-0000-0000"></div>
+        </div>
+
+        <div class="field">
+          <label>문의 유형 *</label>
+          <div class="chips" id="typeChips">
+            <span class="chip on">도입 문의</span>
+            <span class="chip">견적 요청</span>
+            <span class="chip">기술 협업</span>
+            <span class="chip">파트너십</span>
+            <span class="chip">언론 취재</span>
+            <span class="chip">기타</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>관심 솔루션 *</label>
+          <div class="chips" id="solChips">
+            <span class="chip on">NSHC 컨설팅·모의해킹</span>
+            <span class="chip">에브리존 안티랜섬웨어</span>
+            <span class="chip">블루문소프트 DRM</span>
+            <span class="chip">Sumo Logic Cloud SIEM</span>
+            <span class="chip">한국정보인증 MFA</span>
+            <span class="chip">피앤피시큐어 접근제어</span>
+            <span class="chip">통합 설계</span>
+          </div>
+        </div>
+
+        <div class="field"><label>프로젝트 내용 *</label><textarea placeholder="산업군, 규모, 일정, 목표 등을 자유롭게 알려주세요." required></textarea></div>
+
+        <label class="consent"><input type="checkbox" required> 개인정보 수집·이용에 동의합니다. 수집된 정보는 문의 응대 목적으로만 사용되며, 3년간 보관 후 파기됩니다.</label>
+
+        <button type="submit" class="submit">문의 보내기
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="map" data-reveal>
+      <div class="pin">HQ<br>·</div>
+      <div class="tag">SEOUL · GANGNAM</div>
+    </div>
+  </div>
+</section>
+
+<div id="ss-footer"></div>
+<script>const TWEAK_DEFAULTS=/*EDITMODE-BEGIN*/{"accentHue":245,"animations":true,"displayFont":"manrope"}/*EDITMODE-END*/;</script>
+<script src="assets/shared.js"></script>
+<script>
+ssInit('');
+// chip single-select for type, multi for solution
+['typeChips','solChips'].forEach((id,i)=>{
+  const c = document.getElementById(id);
+  c.addEventListener('click',(e)=>{
+    const chip = e.target.closest('.chip'); if(!chip) return;
+    if(i===0){ c.querySelectorAll('.chip').forEach(x=>x.classList.remove('on')); chip.classList.add('on'); }
+    else{ chip.classList.toggle('on'); }
+  });
+});
+document.querySelector('form').addEventListener('submit',(e)=>{e.preventDefault();alert('문의가 접수되었습니다. 24시간 이내 회신드립니다.');});
+</script>
+</body>
+</html>
