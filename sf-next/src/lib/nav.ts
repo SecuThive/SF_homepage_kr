@@ -46,8 +46,8 @@ export const SS_NAV: NavItem[] = [
     label: "SSQ.soc",
     href: "#",
     children: [
+      // IAM은 Zero Trust(Arcus)에 통합 예정 → 드롭다운에서 제외
       { num: "01", title: "Arcus Zero-Trust", titleEn: "Arcus Zero-Trust", mark: "Z", cat: "ZERO TRUST", desc: "Zero Trust 기반 보안 플랫폼", descEn: "Zero Trust Security Platform", descJa: "ゼロトラストベースのセキュリティプラットフォーム", href: "/ssq-trust/arcus" },
-      { num: "02", title: "Arcus IAM", titleEn: "Arcus IAM", mark: "I", cat: "IDENTITY · ACCESS", desc: "통합 계정 관리 · 접근 통제 · IAM", descEn: "Unified Identity & Access Management · IAM", descJa: "統合ID・アクセス管理 · IAM", href: "/ssq-soc/iam" },
     ],
   },
   { id: "news", label: "뉴스", href: "/news" },
