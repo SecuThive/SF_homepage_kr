@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
 import Link from "@/components/LocaleLink";
-import fs from "fs";
-import path from "path";
 import SiteHeader from "@/components/SiteHeader";
 import BusinessClient, { type SectorData } from "./BusinessClient";
+import businessData from "@/data/business.json";
 
 export const metadata: Metadata = { title: "사업영역" };
 
 function loadSectors(): SectorData[] {
-  try {
-    const file = path.join(process.cwd(), "src/data/business.json");
-    return JSON.parse(fs.readFileSync(file, "utf-8"));
-  } catch {
-    return [];
-  }
+  return businessData as SectorData[];
 }
 
 export default function BusinessPage() {

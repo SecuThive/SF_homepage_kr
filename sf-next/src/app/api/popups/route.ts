@@ -1,18 +1,13 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import popupsData from "@/data/popups.json";
 
+// Cloudflare Pages(next-on-pages)는 동적 라우트에 edge 런타임 필요.
+// 파일시스템 대신 빌드 시 번들되는 정적 import 사용(에지엔 fs 없음).
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-const FILE = path.join(process.cwd(), "src/data/popups.json");
-
 export async function GET() {
-  try {
-    const data = JSON.parse(fs.readFileSync(FILE, "utf-8"));
-    return NextResponse.json(data, {
-      headers: { "Cache-Control": "no-store" },
-    });
-  } catch {
-    return NextResponse.json({ popups: [] });
-  }
+  return NextResponse.json(popupsData, {
+    headers: { "Cache-Control": "no-store" },
+  });
 }
